@@ -2,7 +2,8 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 const Product = (props) => {
-    const { handleDelete } = props;
+    // console.log(props);
+    const { handleDelete, handleBuy, index } = props;
     const { productName, price, quantity, _id } = props.product;
 
     return (
@@ -11,10 +12,12 @@ const Product = (props) => {
             <p>Price: {price}</p>
             <p>quantity: {quantity}</p>
 
-            <Link to={`/users/update/${_id}`}>
+            <Link to={`/products/update/${_id}`}>
                 <button>update</button>
             </Link>
             <button onClick={() => handleDelete(_id)}>delete</button>
+            <br />
+            <button onClick={() => handleBuy(index)}>buy now</button>
         </div>
     );
 };

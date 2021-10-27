@@ -1,13 +1,13 @@
 import axios from 'axios';
 import React from 'react';
 import { useForm } from 'react-hook-form';
-import './AddUser.css';
+import './AddProducts.css';
 
-const AddUser = () => {
+const AddProducts = () => {
     const { register, handleSubmit, reset } = useForm();
 
     const onSubmit = data => {
-        console.log(data);
+        // console.log(data);
         axios.post('http://localhost:5000/products', data)
             .then(res => {
                 if (res.data.insertedId) {
@@ -31,4 +31,4 @@ const AddUser = () => {
     );
 };
 
-export default AddUser;
+export default AddProducts;

@@ -1,15 +1,17 @@
+import axios from 'axios';
 import React, { useEffect, useState } from 'react';
 import Product from '../Product/Product';
-import './Users.css';
+import './Products.css';
 
-const Users = () => {
+const Products = () => {
     const [products, setProducts] = useState([]);
+    const [isDeleted, setIsDeleted] = useState(null);
     // get data from database
     useEffect(() => {
         fetch('http://localhost:5000/products')
             .then(res => res.json())
             .then(data => setProducts(data))
-    }, [])
+    }, [isDeleted])
 
     // delete
     const handleDelete = (id) => {
@@ -22,11 +24,29 @@ const Users = () => {
                 .then(result => {
                     if (result.deletedCount) {
                         alert('delete success');
-                        const remaining = products.filter(product => product._id !== id);
-                        setProducts(remaining)
+                        // const remaining = products.filter(product => product._id !== id);
+                        // setProducts(remaining)
+                        setIsDeleted(true);
+                    }
+                    else {
+                        setIsDeleted(false)
                     }
                 });
         }
+
+    }
+
+    // handle buy product
+    const handleBuy = (index) => {
+        const buyProducts = products[index];
+        buyProducts.email = 'hero@gmail.com'
+        console.log(buyProducts);
+        axios.post('http://localhost:5000/buyProducts', buyProducts)
+            .then(res => {
+                if (res.data.insertedId) {
+                    alert('place order success');
+                }
+            })
 
     }
 
@@ -35,10 +55,12 @@ const Users = () => {
             <h2>All Products : {products.length}</h2>
             <div className='product-container'>
                 {
-                    products.map(product => <Product
+                    products.map((product, index) => <Product
                         key={product._id}
                         product={product}
                         handleDelete={handleDelete}
+                        handleBuy={handleBuy}
+                        index={index}
                     >
 
                     </Product>)
@@ -48,4 +70,4 @@ const Users = () => {
     );
 };
 
-export default Users;
+export default Products;

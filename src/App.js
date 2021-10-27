@@ -1,10 +1,11 @@
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
-import AddUser from "./components/AddUser/AddUser";
+import AddProducts from "./components/AddProducts/AddProducts";
 import Home from "./components/Home/Home";
-import Users from "./components/Users/Users";
+import Products from "./components/Products/Products";
 import Header from './components/Header/Header';
 import UpdateProducts from "./components/UpdateProducts/UpdateProducts";
+import Dashboard from "./components/Dashboard/Dashboard";
 
 function App() {
   return (
@@ -16,14 +17,17 @@ function App() {
             <Route exact path="/">
               <Home></Home>
             </Route>
-            <Route exact path="/users">
-              <Users></Users>
+            <Route exact path="/products">
+              <Products></Products>
             </Route>
-            <Route path="/users/add">
-              <AddUser></AddUser>
+            <Route path="/products/add">
+              <AddProducts></AddProducts>
             </Route>
-            <Route path='/users/update/:id'>
+            <Route path='/products/update/:id'>
               <UpdateProducts></UpdateProducts>
+            </Route>
+            <Route exact path='/dashboard'>
+              <Dashboard></Dashboard>
             </Route>
 
           </Switch>
