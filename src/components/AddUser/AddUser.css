@@ -1,0 +1,11 @@
+.addUser form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.addUser form input {
+  margin-bottom: 20px;
+  padding: 10px 5px;
+  width: 40%;
+}
