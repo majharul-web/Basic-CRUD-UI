@@ -2,9 +2,9 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import './App.css';
 import AddUser from "./components/AddUser/AddUser";
 import Home from "./components/Home/Home";
-import UpdateUser from "./components/UpdateUser/UpdateUser";
 import Users from "./components/Users/Users";
 import Header from './components/Header/Header';
+import UpdateProducts from "./components/UpdateProducts/UpdateProducts";
 
 function App() {
   return (
@@ -22,9 +22,8 @@ function App() {
             <Route path="/users/add">
               <AddUser></AddUser>
             </Route>
-
-            <Route path="/users/update/:id">
-              <UpdateUser></UpdateUser>
+            <Route path='/users/update/:id'>
+              <UpdateProducts></UpdateProducts>
             </Route>
 
           </Switch>

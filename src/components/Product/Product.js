@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Product = (props) => {
     const { handleDelete } = props;
@@ -10,7 +11,9 @@ const Product = (props) => {
             <p>Price: {price}</p>
             <p>quantity: {quantity}</p>
 
-            <button >update</button>
+            <Link to={`/users/update/${_id}`}>
+                <button>update</button>
+            </Link>
             <button onClick={() => handleDelete(_id)}>delete</button>
         </div>
     );
